@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <%= render partial: 'home/navbar' %>
+    <section class="section">
+      <% if user_signed_in? %>
+        <h1 class="is-size-2 has-text-centered has-text-light">Bienvenido a FamilyChat</h1>
+
+
+
+
+
+
+        <!--parte de los botones que sobre el log-->
+        <div class="buttons is-centered">
+          <%= link_to 'sing out', destroy_user_session_path, method: :delete, class: "button is-link is-responsive"%>
+        </div>
+      <% else %>
+        <div class="buttons is-centered">
+          <%= link_to 'sing in', new_user_session_path, class: "button is-link is-responsive" %>
+          <%= link_to 'sing up', new_user_registration_path, class: "button is-link is-responsive" %>
+        </div>
+      <% end %>
+    </section>
+  </body>
+</html>
