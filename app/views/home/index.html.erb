@@ -3,24 +3,40 @@
   <body>
     <%= render partial: 'home/navbar' %>
     <section class="section">
-      <% if user_signed_in? %>
-        <h1 class="is-size-2 has-text-centered has-text-light">Bienvenido a FamilyChat</h1>
-
-
-
-
-
-
-        <!--parte de los botones que sobre el log-->
-        <div class="buttons is-centered">
-          <%= link_to 'sing out', destroy_user_session_path, method: :delete, class: "button is-link is-responsive"%>
+      <section class="section">
+        <div class="container is-flex flex-direction-columns">
+          <div class="columns is-vcentered">
+            <div class="column is-4 mx-6">
+              <h1 class="title has-text-light">Bienvenido a FamilyChat</h1>
+              <h2 class="subtitle has-text-light">Comunicate facilmente y con Confianza </h2>
+              <p class="has-text-justified	">Nuestra aplicación de chat te permite conectarte con amigos, familiares y colegas en tiempo real. Chatea, comparte archivos y mantén conversaciones grupales con facilidad</p>
+              <!--parte de los botones-->
+              <div class="section">
+                <% if user_signed_in? %>
+                  <div class="buttons">
+                    <%= link_to 'sing out', destroy_user_session_path, method: :delete, class: "button is-link is-responsive"%>
+                  </div>
+                <% else %>
+                  <div class="buttons">
+                    <%= link_to 'sing in', new_user_session_path, class: "button is-link is-responsive" %>
+                    <%= link_to 'sing up', new_user_registration_path, class: "button is-link is-responsive" %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+            <div class="column is-6 mx-6">
+              <figure class="image">
+                <img class="" src="https://res.cloudinary.com/dyq41tgzg/image/upload/v1718898313/familychat/familychat_home_ntkuw7.jpg" alt="familychat_home image" style="border-radius: 10%;">
+              </figure>
+            </div>
+          </div>
         </div>
-      <% else %>
-        <div class="buttons is-centered">
-          <%= link_to 'sing in', new_user_session_path, class: "button is-link is-responsive" %>
-          <%= link_to 'sing up', new_user_registration_path, class: "button is-link is-responsive" %>
-        </div>
-      <% end %>
+
+
+
+      </section>
+
+
     </section>
   </body>
 </html>

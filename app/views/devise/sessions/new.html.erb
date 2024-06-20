@@ -1,26 +1,39 @@
-<h2>Log in</h2>
+<!DOCTYPE html>
+<html>
+  <body>
+    <section class="section">
+      <h1 class="title has-text-centered ">Iniciar Sesión</h1>
+      <div class="container has-background-link px-6 py-6" style="max-width: 30rem; border-radius: 5%">
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="field">
+            <%= f.label :email, class: "label" %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input" %>
+          </div>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+          <div class="field">
+            <%= f.label :password, class: "label" %>
+            <%= f.password_field :password, autocomplete: "current-password", class: "input" %>
+          </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+          <% if devise_mapping.rememberable? %>
+            <div class="field">
+              <%= f.check_box :remember_me %>
+              <%= f.label :remember_me, class: "label" %>
+            </div>
+          <% end %>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end %>
+          <div class="actions has-text-centered">
+            <%= f.submit "Log in", class: "button is-light is-responsive" %>
+          </div>
+        <% end %>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
+        <p class="has-text-centered mt-2">Or</p>
 
-<%= render "devise/shared/links" %>
+        <div class="has-text-centered">
+          <%= render "devise/shared/links"%>
+        </div>
+
+      </div>
+    </section>
+  </body>
+</html>

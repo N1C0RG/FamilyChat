@@ -4,12 +4,25 @@
     <a class="navbar-item">
       <img src="https://res.cloudinary.com/dyq41tgzg/image/upload/v1718896525/familychat/familychat_logo_xgbin0.png" alt="familychat logo", style="max-height: 7rem;">
     </a>
+    <a class="navbar-burger" id="burger">
+      <span></span>
+      <span></span>
+    </a>
   </div>
   <!-- menu de la navbar-->
   <div class="navbar-menu" id="nav-links">
     <div class="navbar-start">
-      <a href="" class="navbar-item">My Perfil</a>
-      <a href="" class="navbar-item">Grupos</a>
+      <%= link_to 'Grupos', destroy_user_session_path, class: "navbar-item" %>
+      <%= link_to 'Mi Perfil', destroy_user_session_path, class: "navbar-item" %>
     </div>
   </div>
 </nav>
+
+<script>
+  const burgerIcon = document.querySelector('#burger');
+  const burgerMenu = document.querySelector('#nav-links');
+
+  burgerIcon.addEventListener('click', () => {
+    burgerMenu.classList.toggle('is-active');
+  });
+</script>

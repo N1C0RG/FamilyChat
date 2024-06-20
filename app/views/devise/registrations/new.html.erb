@@ -1,29 +1,47 @@
-<h2>Sign up</h2>
+<!DOCTYPE html>
+<html>
+  
+  <body>
+    <section class="section">
+      <h1 class="title has-text-centered ">Registrate</h1>
+      <div class="container has-background-link px-6 py-6" style="max-width: 30rem; border-radius: 5%">
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= render "devise/shared/error_messages", resource: resource %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+          <div class="field">
+            <%= f.label :email, class: "label" %>
+            <div class="control">
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input" %>
+            </div>
+          </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+          <div class="field">
+            <%= f.label :password, class: "label" %>
+            <% if @minimum_password_length %>
+            <p class="help">(<%= @minimum_password_length %> characters minimum)</p>
+            <% end %>
+            <%= f.password_field :password, autocomplete: "new-password", class: "input" %>
+          </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+          <div class="field">
+            <%= f.label :password_confirmation, class: "label" %>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "input" %>
+          </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+          <div class="actions has-text-centered">
+            <%= f.submit "Sign up", class: "button is-light is-responsive" %>
+          </div>
+        <% end %>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+        <p class="has-text-centered mt-2">Or</p>
 
-<%= render "devise/shared/links" %>
+        <div class="columns has-text-centered">
+          <%= render "devise/shared/links"%>
+        </div>
+
+      </div>
+
+
+    </section>
+  </body>
+</html>
