@@ -108,6 +108,8 @@ GEM
       multipart-post (~> 2)
     faraday-net_http (3.1.0)
       net-http
+    font-awesome-rails (4.7.0.8)
+      railties (>= 3.2, < 8.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
     i18n (1.14.5)
@@ -252,6 +254,7 @@ DEPENDENCIES
   cloudinary
   debug
   devise
+  font-awesome-rails
   importmap-rails
   jbuilder
   pg (~> 1.1)

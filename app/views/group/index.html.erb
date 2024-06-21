@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <%= render partial: 'home/navbar' %>
+
+    <h1 class="title mt-6 has-text-centered">Grupos</h1>
+    <div class="columns is-multiline is-centered">
+      
+        <% @group.each do |group| %>
+          <div class="section mt-2" >
+            <div class="column has-background-link px-6 py-6 has-text-left" style="border-radius: 5%; width: 30rem; min-height: 30rem;">
+              <figure class="image mb-2 is-3by2">
+                <%= image_tag group.photo, style: "border-radius: 5%;" %>
+              </figure>
+              <h1 class="title">Grupo: <%= group.name %></h1>  
+              <h4 class="is-size-5 has-text-weight-bold has-text-light">Descripción</h4>
+              <p class="is-link"><%= group.description %></p>
+              <h4 class="is-size-5 has-text-weight-bold has-text-light">Usuarios</h4>
+              <% group.users.each do |user| %>
+                <%= user.email %>
+              <% end %>
+              <div class="has-text-centered mt-4">
+                <% if group.users.include?(current_user) == false%>
+                  <%= link_to 'Unirse', join_group_path(id: group.id), class: "button is-white" %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+        </div>
+    <!-- <section class="section">
+      <% @u.each do |user| %>
+        <div class="my-5">
+          <%= user.email%>
+          <% user.groups.each do |g| %>
+            <%= g.name %>
+          <% end %>
+        </div>
+      <% end %>
+    </section> -->
+  </body>
+</html>
