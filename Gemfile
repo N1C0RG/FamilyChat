@@ -73,3 +73,4 @@ end
 
 gem 'devise'
 gem 'cloudinary'
+gem 'font-awesome-rails'

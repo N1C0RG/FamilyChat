@@ -1,10 +1,11 @@
 <nav class="navbar has-shadow is-link">
   <!--logo de la nav-->
   <div class="navbar-brand">
-    <a class="navbar-item">
+    <a class="navbar-item" href="<%= home_path %>">
       <img src="https://res.cloudinary.com/dyq41tgzg/image/upload/v1718896525/familychat/familychat_logo_xgbin0.png" alt="familychat logo", style="max-height: 7rem;">
     </a>
     <a class="navbar-burger" id="burger">
+      <span></span>
       <span></span>
       <span></span>
     </a>
@@ -12,8 +13,11 @@
   <!-- menu de la navbar-->
   <div class="navbar-menu" id="nav-links">
     <div class="navbar-start">
-      <%= link_to 'Grupos', destroy_user_session_path, class: "navbar-item" %>
-      <%= link_to 'Mi Perfil', destroy_user_session_path, class: "navbar-item" %>
+      <% if user_signed_in? %>
+        <%= link_to 'Crear Grupo', new_group_path(id: current_user.id), class: "navbar-item" %>
+        <%= link_to 'Buscar Grupo', search_group_path, class: "navbar-item" %>
+        <%= link_to 'Mi Perfil', edit_user_registration_path, class: "navbar-item" %>
+      <% end %>
     </div>
   </div>
 </nav>

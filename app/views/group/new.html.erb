@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  
+  <body>
+    <%= render partial: 'home/navbar' %>
+    <section class="section">
+      <h1 class="title has-text-centered ">Crear Grupo</h1>
+      <div class="container has-background-link px-6 py-6" style="max-width: 30rem; border-radius: 5%">
+        <%= form_for @group, url: create_group_path do |f| %>
+          <div class="field">
+            <%= f.label :name, class: "label" %>
+            <div class="control">
+              <%= f.text_field :name, class: "input" %>
+            </div>
+          </div>
+
+          <div class="field">
+            <%= f.label :description, class: "label" %>
+            <div class="control">
+              <%= f.text_area :description, size: "60x5", class: "textarea" %>
+            </div>
+          </div>
+          
+          <div class="file is-light">
+            <label class="file-label">
+              <%= f.file_field :photo, class: "file-input"%>
+              <span class="file-cta">
+                <span class="file-icon">
+                  <i class="fas fa-upload"></i>
+                </span>
+                <span class="file-label">imagen</span>
+              </span>
+            </label>
+          </div>
+
+          <div class="actions has-text-centered">
+            <%= f.submit "Crear", class: "button is-light is-responsive" %>
+          </div>
+        <% end %>
+      </div>
+    </section>
+  </body>
+</html>
